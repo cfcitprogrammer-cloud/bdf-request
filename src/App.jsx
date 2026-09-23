@@ -93,10 +93,10 @@ function AppLayout() {
   const currentView = location.pathname; // "/" or "/admin"
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col selection:bg-blue-100">
+    <div className="min-h-screen bg-amber-100 flex flex-col selection:bg-blue-100">
       {/* Navigation Bar */}
       <div className="bg-white border-b px-4 py-3 flex justify-between items-center shadow-sm sticky top-0 z-10">
-        <div className="font-bold text-slate-800 text-lg flex items-center gap-2">
+        <div className="font-bold text-amber-800 text-lg flex items-center gap-2">
           <FileText className="w-5 h-5 text-blue-600" />
           BDF Portal
         </div>
@@ -105,7 +105,7 @@ function AppLayout() {
             variant={currentView === "/" ? "default" : "outline"}
             onClick={() => navigate("/")}
             size="sm"
-            className={currentView === "/" ? "bg-slate-900 text-white" : ""}
+            className={currentView === "/" ? "bg-amber-900 text-white" : ""}
           >
             <Plus className="w-4 h-4 mr-1 md:mr-2" />
             <span className="hidden md:inline">Submit Request</span>
@@ -116,7 +116,7 @@ function AppLayout() {
             onClick={() => navigate("/admin")}
             size="sm"
             className={
-              currentView.includes("/admin") ? "bg-slate-900 text-white" : ""
+              currentView.includes("/admin") ? "bg-amber-900 text-white" : ""
             }
           >
             <LayoutDashboard className="w-4 h-4 mr-1 md:mr-2" />
@@ -421,21 +421,21 @@ function AdminDashboard({ session }) {
   if (selectedRequest) {
     return (
       <Card className="w-full p-0 max-w-8xl shadow-lg border-0 overflow-hidden rounded-xl h-fit animate-in fade-in zoom-in-95 duration-200">
-        <CardHeader className="bg-slate-900 text-white px-4 py-4 md:px-6 md:py-5 flex flex-row items-center justify-between">
+        <CardHeader className="bg-amber-900 text-white px-4 py-4 md:px-6 md:py-5 flex flex-row items-center justify-between">
           <div>
             <CardTitle className="text-xl font-bold tracking-tight flex items-center gap-2">
               <Button
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-slate-800 hover:text-white -ml-2 h-8 w-8"
+                className="text-white hover:bg-amber-800 hover:text-white -ml-2 h-8 w-8"
                 onClick={() => setSelectedRequest(null)}
               >
                 <ArrowLeft className="w-5 h-5" />
               </Button>
               Request Details #{selectedRequest.id}
             </CardTitle>
-            <CardDescription className="text-slate-300 mt-1 ml-9">
+            <CardDescription className="text-amber-300 mt-1 ml-9">
               Distributor: {selectedRequest.distributor_name}
             </CardDescription>
           </div>
@@ -444,45 +444,45 @@ function AdminDashboard({ session }) {
             size="sm"
             onClick={handleExportDetailsCSV}
             disabled={requestItems.length === 0}
-            className="text-slate-900 bg-white hover:bg-slate-100 border-none h-8 hidden sm:flex"
+            className="text-amber-900 bg-white hover:bg-amber-100 border-none h-8 hidden sm:flex"
           >
             <Download className="w-4 h-4 mr-2" />
             Export Items
           </Button>
         </CardHeader>
-        <CardContent className="p-3 md:p-6 bg-slate-50 space-y-4 md:space-y-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+        <CardContent className="p-3 md:p-6 bg-amber-50 space-y-4 md:space-y-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 bg-white p-4 rounded-lg border border-amber-200 shadow-sm">
             <div>
-              <p className="text-xs text-slate-500 font-medium">Date</p>
-              <p className="text-sm font-semibold text-slate-800">
+              <p className="text-xs text-amber-500 font-medium">Date</p>
+              <p className="text-sm font-semibold text-amber-800">
                 {selectedRequest.date}
               </p>
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-medium">Area</p>
-              <p className="text-sm font-semibold text-slate-800">
+              <p className="text-xs text-amber-500 font-medium">Area</p>
+              <p className="text-sm font-semibold text-amber-800">
                 {selectedRequest.area}
               </p>
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-medium">Fee Type</p>
-              <p className="text-sm font-semibold text-slate-800">
+              <p className="text-xs text-amber-500 font-medium">Fee Type</p>
+              <p className="text-sm font-semibold text-amber-800">
                 {selectedRequest.fee_type === "Others"
                   ? selectedRequest.other_fee_type
                   : selectedRequest.fee_type}
               </p>
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-medium">Prepared By</p>
-              <p className="text-sm font-semibold text-slate-800">
+              <p className="text-xs text-amber-500 font-medium">Prepared By</p>
+              <p className="text-sm font-semibold text-amber-800">
                 {selectedRequest.prepared_by}
               </p>
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-200 overflow-x-auto bg-white shadow-sm">
+          <div className="rounded-lg border border-amber-200 overflow-x-auto bg-white shadow-sm">
             <Table>
-              <TableHeader className="bg-slate-100/80">
+              <TableHeader className="bg-amber-100/80">
                 <TableRow>
                   <TableHead className="min-w-[150px]">Particulars</TableHead>
                   {selectedRequest.fee_type === "Listing Fee" && (
@@ -504,7 +504,7 @@ function AdminDashboard({ session }) {
                       colSpan={
                         selectedRequest.fee_type === "Listing Fee" ? 7 : 5
                       }
-                      className="text-center py-8 text-slate-500"
+                      className="text-center py-8 text-amber-500"
                     >
                       <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />
                       Loading items...
@@ -516,7 +516,7 @@ function AdminDashboard({ session }) {
                       colSpan={
                         selectedRequest.fee_type === "Listing Fee" ? 7 : 5
                       }
-                      className="text-center py-8 text-slate-500"
+                      className="text-center py-8 text-amber-500"
                     >
                       No line items found.
                     </TableCell>
@@ -524,29 +524,29 @@ function AdminDashboard({ session }) {
                 ) : (
                   requestItems.map((item) => (
                     <TableRow key={item.id}>
-                      <TableCell className="font-medium text-slate-700">
+                      <TableCell className="font-medium text-amber-700">
                         {item.particulars}
                       </TableCell>
                       {selectedRequest.fee_type === "Listing Fee" && (
                         <>
-                          <TableCell className="text-slate-600">
+                          <TableCell className="text-amber-600">
                             {item.sku || "-"}
                           </TableCell>
-                          <TableCell className="text-slate-600">
+                          <TableCell className="text-amber-600">
                             {item.store || "-"}
                           </TableCell>
                         </>
                       )}
-                      <TableCell className="text-right text-slate-600">
+                      <TableCell className="text-right text-amber-600">
                         {item.qty}
                       </TableCell>
-                      <TableCell className="text-right text-slate-600">
+                      <TableCell className="text-right text-amber-600">
                         {item.unit_amount.toFixed(2)}
                       </TableCell>
-                      <TableCell className="text-right font-semibold text-slate-800">
+                      <TableCell className="text-right font-semibold text-amber-800">
                         {item.total_amount.toFixed(2)}
                       </TableCell>
-                      <TableCell className="text-slate-500 text-xs">
+                      <TableCell className="text-amber-500 text-xs">
                         {item.remarks || "-"}
                       </TableCell>
                     </TableRow>
@@ -554,10 +554,10 @@ function AdminDashboard({ session }) {
                 )}
               </TableBody>
               <TableFooter>
-                <TableRow className="bg-slate-50">
+                <TableRow className="bg-amber-50">
                   <TableCell
                     colSpan={selectedRequest.fee_type === "Listing Fee" ? 5 : 3}
-                    className="text-right font-bold text-slate-700"
+                    className="text-right font-bold text-amber-700"
                   >
                     Grand Total
                   </TableCell>
@@ -576,12 +576,12 @@ function AdminDashboard({ session }) {
 
   return (
     <Card className="w-full p-0 max-w-8xl shadow-lg border-0 overflow-hidden rounded-xl h-fit animate-in fade-in duration-300 flex flex-col">
-      <CardHeader className="bg-gradient-to-r from-slate-900 to-slate-800 text-white px-4 py-4 md:px-6 md:py-5 flex flex-row justify-between items-center">
+      <CardHeader className="bg-gradient-to-r from-amber-900 to-amber-800 text-white px-4 py-4 md:px-6 md:py-5 flex flex-row justify-between items-center">
         <div>
           <CardTitle className="text-xl md:text-2xl font-bold tracking-tight">
             Admin Dashboard
           </CardTitle>
-          <CardDescription className="text-slate-300 text-sm mt-1">
+          <CardDescription className="text-amber-300 text-sm mt-1">
             Manage and review all submitted BDF requests.
           </CardDescription>
         </div>
@@ -590,7 +590,7 @@ function AdminDashboard({ session }) {
             variant="outline"
             size="sm"
             onClick={handleExportCSV}
-            className="text-slate-900 bg-white hover:bg-slate-100 border-none h-8 hidden sm:flex"
+            className="text-amber-900 bg-white hover:bg-amber-100 border-none h-8 hidden sm:flex"
             disabled={requests.length === 0}
           >
             <Download className="w-4 h-4 mr-2" />
@@ -600,7 +600,7 @@ function AdminDashboard({ session }) {
             variant="outline"
             size="sm"
             onClick={handleLogout}
-            className="text-slate-900 bg-slate-200 hover:bg-slate-300 border-none h-8"
+            className="text-amber-900 bg-amber-200 hover:bg-amber-300 border-none h-8"
           >
             <LogOut className="w-4 h-4 sm:mr-2" />
             <span className="hidden sm:inline">Sign Out</span>
@@ -608,9 +608,9 @@ function AdminDashboard({ session }) {
         </div>
       </CardHeader>
 
-      <CardContent className="p-0 bg-white border-x border-slate-200 overflow-x-auto flex-1">
+      <CardContent className="p-0 bg-white border-x border-amber-200 overflow-x-auto flex-1">
         <Table>
-          <TableHeader className="bg-slate-50 border-b">
+          <TableHeader className="bg-amber-50 border-b">
             <TableRow className="[&>th]:whitespace-nowrap">
               <TableHead className="w-[100px]">ID</TableHead>
               <TableHead>Date</TableHead>
@@ -627,7 +627,7 @@ function AdminDashboard({ session }) {
               <TableRow>
                 <TableCell
                   colSpan={8}
-                  className="text-center py-12 text-slate-500"
+                  className="text-center py-12 text-amber-500"
                 >
                   <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-blue-600" />
                   Loading requests...
@@ -637,7 +637,7 @@ function AdminDashboard({ session }) {
               <TableRow>
                 <TableCell
                   colSpan={8}
-                  className="text-center py-12 text-slate-500"
+                  className="text-center py-12 text-amber-500"
                 >
                   No requests found.
                 </TableCell>
@@ -646,21 +646,21 @@ function AdminDashboard({ session }) {
               currentRequests.map((req) => (
                 <TableRow
                   key={req.id}
-                  className="hover:bg-slate-50 transition-colors"
+                  className="hover:bg-amber-50 transition-colors"
                 >
-                  <TableCell className="font-medium text-slate-500">
+                  <TableCell className="font-medium text-amber-500">
                     BDF-{String(req.id).padStart(6, "0")}
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
                     {req.date}
                   </TableCell>
-                  <TableCell className="text-slate-600 text-xs">
+                  <TableCell className="text-amber-600 text-xs">
                     {req.area}
                   </TableCell>
-                  <TableCell className="font-semibold text-slate-800">
+                  <TableCell className="font-semibold text-amber-800">
                     {req.distributor_name}
                   </TableCell>
-                  <TableCell className="text-slate-600">
+                  <TableCell className="text-amber-600">
                     {req.account_name}
                   </TableCell>
                   <TableCell>
@@ -670,7 +670,7 @@ function AdminDashboard({ session }) {
                         : req.fee_type}
                     </span>
                   </TableCell>
-                  <TableCell className="text-right font-bold text-slate-700">
+                  <TableCell className="text-right font-bold text-amber-700">
                     {req.grand_total?.toFixed(2)}
                   </TableCell>
                   <TableCell className="text-center">
@@ -692,8 +692,8 @@ function AdminDashboard({ session }) {
 
       {/* Pagination Controls */}
       {requests.length > 0 && (
-        <div className="bg-slate-50 border border-t-0 border-slate-200 rounded-b-xl px-4 py-3 flex items-center justify-between">
-          <div className="text-sm text-slate-500 font-medium">
+        <div className="bg-amber-50 border border-t-0 border-amber-200 rounded-b-xl px-4 py-3 flex items-center justify-between">
+          <div className="text-sm text-amber-500 font-medium">
             Showing {indexOfFirstItem + 1} to{" "}
             {Math.min(indexOfLastItem, requests.length)} of {requests.length}{" "}
             entries
@@ -708,7 +708,7 @@ function AdminDashboard({ session }) {
             >
               <ChevronLeft className="w-4 h-4 mr-1" /> Prev
             </Button>
-            <div className="flex items-center px-2 text-sm font-medium text-slate-700">
+            <div className="flex items-center px-2 text-sm font-medium text-amber-700">
               Page {currentPage} of {totalPages}
             </div>
             <Button
@@ -930,7 +930,7 @@ function RequestForm() {
 
         // WARNING: Replace this string with your Google Apps Script Web App URL
         const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbwFOuqO-BdTqI6_5GIV9DqNDAgQbUh6s419EHyMbVsczudLYEcTT0J_mzlOQUA1fX9v/exec";
+          "https://script.google.com/macros/s/AKfycbz8cIiA4rkXmo_Jrjveugd0htw4fxwL_-HDPSV25w8vf9XFw6HbU1V792KjWBoN7tCw/exec";
 
         await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
@@ -1016,10 +1016,10 @@ function RequestForm() {
               <CheckCircle2 className="w-16 h-16 text-emerald-500" />
             </div>
             <div className="space-y-1">
-              <h2 className="text-xl font-bold text-slate-800">Success!</h2>
-              <p className="text-sm text-slate-500">
+              <h2 className="text-xl font-bold text-amber-800">Success!</h2>
+              <p className="text-sm text-amber-500">
                 BDF Request for{" "}
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold text-amber-700">
                   {formData.distributorName}
                 </span>{" "}
                 submitted.
@@ -1028,7 +1028,7 @@ function RequestForm() {
             <div className="pt-2">
               <Button
                 onClick={resetForm}
-                className="w-full bg-slate-900 hover:bg-slate-800 text-sm py-2 h-9 rounded-lg"
+                className="w-full bg-amber-900 hover:bg-amber-800 text-sm py-2 h-9 rounded-lg"
               >
                 Submit Another
               </Button>
@@ -1041,23 +1041,23 @@ function RequestForm() {
 
   return (
     <Card className="w-full p-0 max-w-8xl shadow-lg border-0 overflow-hidden rounded-xl h-fit animate-in fade-in duration-300">
-      <CardHeader className="bg-gradient-to-r from-slate-900 to-slate-800 text-white px-4 py-4 md:px-6 md:py-5">
+      <CardHeader className="bg-gradient-to-r from-amber-900 to-amber-800 text-white px-4 py-4 md:px-6 md:py-5">
         <CardTitle className="text-xl md:text-2xl font-bold tracking-tight">
           BDF Request Form
         </CardTitle>
-        <CardDescription className="text-slate-300 text-xs md:text-sm mt-1">
+        <CardDescription className="text-amber-300 text-xs md:text-sm mt-1">
           Complete the details below to submit a new request.
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="p-0 bg-slate-50">
+      <CardContent className="p-0 bg-amber-50">
         <form onSubmit={handleSubmit}>
           <div className="p-3 md:p-6 space-y-4">
             {/* SECTION 1: General Details */}
-            <section className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 space-y-3">
+            <section className="bg-white rounded-lg shadow-sm border border-amber-200 p-4 space-y-3">
               <div className="flex items-center gap-2 border-b pb-2">
                 <FileText className="w-4 h-4 text-blue-600" />
-                <h3 className="text-sm font-semibold text-slate-800">
+                <h3 className="text-sm font-semibold text-amber-800">
                   General Information
                 </h3>
               </div>
@@ -1066,7 +1066,7 @@ function RequestForm() {
                 <div className="space-y-1">
                   <Label
                     htmlFor="distributorName"
-                    className="text-xs text-slate-600 font-medium"
+                    className="text-xs text-amber-600 font-medium"
                   >
                     Distributor Name
                   </Label>
@@ -1076,13 +1076,13 @@ function RequestForm() {
                     value={formData.distributorName}
                     onChange={handleInputChange}
                     required
-                    className="h-8 text-sm bg-slate-50/50"
+                    className="h-8 text-sm bg-amber-50/50"
                   />
                 </div>
                 <div className="space-y-1">
                   <Label
                     htmlFor="area"
-                    className="text-xs text-slate-600 font-medium"
+                    className="text-xs text-amber-600 font-medium"
                   >
                     Area
                   </Label>
@@ -1091,7 +1091,7 @@ function RequestForm() {
                     onValueChange={handleAreaChange}
                     required
                   >
-                    <SelectTrigger className="h-8 w-full text-sm bg-slate-50/50">
+                    <SelectTrigger className="h-8 w-full text-sm bg-amber-50/50">
                       <SelectValue placeholder="Select area..." />
                     </SelectTrigger>
                     <SelectContent>
@@ -1106,7 +1106,7 @@ function RequestForm() {
                 <div className="space-y-1">
                   <Label
                     htmlFor="date"
-                    className="text-xs text-slate-600 font-medium"
+                    className="text-xs text-amber-600 font-medium"
                   >
                     Date
                   </Label>
@@ -1117,13 +1117,13 @@ function RequestForm() {
                     value={formData.date}
                     onChange={handleInputChange}
                     required
-                    className="h-8 text-sm bg-slate-50/50"
+                    className="h-8 text-sm bg-amber-50/50"
                   />
                 </div>
                 <div className="space-y-1">
                   <Label
                     htmlFor="accountName"
-                    className="text-xs text-slate-600 font-medium"
+                    className="text-xs text-amber-600 font-medium"
                   >
                     Account Name
                   </Label>
@@ -1133,13 +1133,13 @@ function RequestForm() {
                     value={formData.accountName}
                     onChange={handleInputChange}
                     required
-                    className="h-8 text-sm bg-slate-50/50"
+                    className="h-8 text-sm bg-amber-50/50"
                   />
                 </div>
                 <div className="space-y-1 md:col-span-2">
                   <Label
                     htmlFor="address"
-                    className="text-xs text-slate-600 font-medium"
+                    className="text-xs text-amber-600 font-medium"
                   >
                     Address
                   </Label>
@@ -1149,13 +1149,13 @@ function RequestForm() {
                     value={formData.address}
                     onChange={handleInputChange}
                     required
-                    className="h-8 text-sm bg-slate-50/50"
+                    className="h-8 text-sm bg-amber-50/50"
                   />
                 </div>
                 <div className="space-y-1 md:col-span-1">
                   <Label
                     htmlFor="preparedBy"
-                    className="text-xs text-slate-600 font-medium"
+                    className="text-xs text-amber-600 font-medium"
                   >
                     Prepared By
                   </Label>
@@ -1164,7 +1164,7 @@ function RequestForm() {
                     onValueChange={handlePreparedByChange}
                     required
                   >
-                    <SelectTrigger className="h-8 w-full text-sm bg-slate-50/50">
+                    <SelectTrigger className="h-8 w-full text-sm bg-amber-50/50">
                       <SelectValue placeholder="Select name..." />
                     </SelectTrigger>
                     <SelectContent>
@@ -1185,7 +1185,7 @@ function RequestForm() {
                       placeholder="Please specify..."
                       onChange={handleInputChange}
                       required
-                      className="h-8 text-sm bg-slate-50/50 mt-2 animate-in fade-in"
+                      className="h-8 text-sm bg-amber-50/50 mt-2 animate-in fade-in"
                     />
                   )}
                 </div>
@@ -1193,10 +1193,10 @@ function RequestForm() {
             </section>
 
             {/* SECTION 2: Fee Category */}
-            <section className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 space-y-3">
+            <section className="bg-white rounded-lg shadow-sm border border-amber-200 p-4 space-y-3">
               <div className="flex items-center gap-2 border-b pb-2">
                 <Wallet className="w-4 h-4 text-blue-600" />
-                <h3 className="text-sm font-semibold text-slate-800">
+                <h3 className="text-sm font-semibold text-amber-800">
                   Fee Category
                 </h3>
               </div>
@@ -1215,11 +1215,11 @@ function RequestForm() {
                     <RadioGroupItem
                       value={fee}
                       id={fee}
-                      className="w-4 h-4 text-blue-600 border-slate-300"
+                      className="w-4 h-4 text-blue-600 border-amber-300"
                     />
                     <Label
                       htmlFor={fee}
-                      className="cursor-pointer text-xs md:text-sm font-medium text-slate-700"
+                      className="cursor-pointer text-xs md:text-sm font-medium text-amber-700"
                     >
                       {fee}
                     </Label>
@@ -1228,10 +1228,10 @@ function RequestForm() {
               </RadioGroup>
 
               {formData.feeType === "Others" && (
-                <div className="mt-2 pt-2 animate-in fade-in border-t border-dashed border-slate-200">
+                <div className="mt-2 pt-2 animate-in fade-in border-t border-dashed border-amber-200">
                   <Label
                     htmlFor="otherFeeType"
-                    className="text-xs text-slate-600 mb-1 block"
+                    className="text-xs text-amber-600 mb-1 block"
                   >
                     Specify Other Fee:
                   </Label>
@@ -1242,18 +1242,18 @@ function RequestForm() {
                     placeholder="Details..."
                     onChange={handleInputChange}
                     required
-                    className="h-8 text-sm max-w-sm bg-slate-50/50"
+                    className="h-8 text-sm max-w-sm bg-amber-50/50"
                   />
                 </div>
               )}
             </section>
 
             {/* SECTION 3: Dynamic Items Table */}
-            <section className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 space-y-3">
+            <section className="bg-white rounded-lg shadow-sm border border-amber-200 p-4 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-2">
                 <div className="flex items-center gap-2">
                   <LayoutList className="w-4 h-4 text-blue-600" />
-                  <h3 className="text-sm font-semibold text-slate-800">
+                  <h3 className="text-sm font-semibold text-amber-800">
                     Request Breakdown
                   </h3>
                 </div>
@@ -1267,10 +1267,10 @@ function RequestForm() {
                 </Button>
               </div>
 
-              <div className="rounded-lg border border-slate-200 overflow-x-auto shadow-inner bg-slate-50/50">
+              <div className="rounded-lg border border-amber-200 overflow-x-auto shadow-inner bg-amber-50/50">
                 <Table className="text-sm">
-                  <TableHeader className="bg-slate-100/80">
-                    <TableRow className="hover:bg-transparent [&>th]:px-2 [&>th]:py-1 [&>th]:h-8 [&>th]:text-xs [&>th]:text-slate-600">
+                  <TableHeader className="bg-amber-100/80">
+                    <TableRow className="hover:bg-transparent [&>th]:px-2 [&>th]:py-1 [&>th]:h-8 [&>th]:text-xs [&>th]:text-amber-600">
                       <TableHead className="min-w-[150px]">
                         Particulars
                       </TableHead>
@@ -1292,7 +1292,7 @@ function RequestForm() {
                     {items.map((item, index) => (
                       <TableRow
                         key={index}
-                        className="bg-white group [&>td]:p-1.5 hover:bg-slate-50/80 transition-colors"
+                        className="bg-white group [&>td]:p-1.5 hover:bg-amber-50/80 transition-colors"
                       >
                         <TableCell>
                           <Input
@@ -1373,7 +1373,7 @@ function RequestForm() {
                             value={item.totalAmount}
                             readOnly
                             tabIndex={-1}
-                            className="h-7 text-xs px-2 bg-slate-100/70 font-semibold text-slate-700 border-transparent shadow-none"
+                            className="h-7 text-xs px-2 bg-amber-100/70 font-semibold text-amber-700 border-transparent shadow-none"
                           />
                         </TableCell>
                         <TableCell>
@@ -1403,7 +1403,7 @@ function RequestForm() {
                               variant="ghost"
                               size="icon"
                               onClick={() => removeRow(index)}
-                              className="h-7 w-7 text-slate-400 hover:text-red-600 hover:bg-red-50"
+                              className="h-7 w-7 text-amber-400 hover:text-red-600 hover:bg-red-50"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
                             </Button>
@@ -1415,7 +1415,7 @@ function RequestForm() {
                     ))}
                   </TableBody>
                   <TableFooter>
-                    <TableRow className="bg-slate-900 text-white hover:bg-slate-900 [&>td]:py-2 [&>td]:px-2">
+                    <TableRow className="bg-amber-900 text-white hover:bg-amber-900 [&>td]:py-2 [&>td]:px-2">
                       <TableCell
                         colSpan={isListingFee ? 3 : 1}
                         className="text-right font-medium text-xs rounded-bl-lg"
@@ -1442,17 +1442,17 @@ function RequestForm() {
             </section>
 
             {/* SECTION 4: Attachments */}
-            <section className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 space-y-3">
+            <section className="bg-white rounded-lg shadow-sm border border-amber-200 p-4 space-y-3">
               <div className="flex items-center gap-2 border-b pb-2">
                 <Paperclip className="w-4 h-4 text-blue-600" />
-                <h3 className="text-sm font-semibold text-slate-800">
+                <h3 className="text-sm font-semibold text-amber-800">
                   Supporting Documents
                 </h3>
               </div>
               <div className="space-y-1">
                 <Label
                   htmlFor="attachments"
-                  className="text-xs text-slate-600 font-medium"
+                  className="text-xs text-amber-600 font-medium"
                 >
                   Upload Files (Optional)
                 </Label>
@@ -1461,9 +1461,9 @@ function RequestForm() {
                   type="file"
                   multiple
                   onChange={handleFileChange}
-                  className="h-8 text-xs pt-1.5 cursor-pointer file:h-full file:bg-slate-100 file:text-xs file:font-medium file:border-0 file:mr-2 file:px-2 file:-my-1 hover:file:bg-slate-200 bg-slate-50/50"
+                  className="h-8 text-xs pt-1.5 cursor-pointer file:h-full file:bg-amber-100 file:text-xs file:font-medium file:border-0 file:mr-2 file:px-2 file:-my-1 hover:file:bg-amber-200 bg-amber-50/50"
                 />
-                <p className="text-[10px] text-slate-500">
+                <p className="text-[10px] text-amber-500">
                   You can select multiple files at once.
                 </p>
               </div>
@@ -1471,7 +1471,7 @@ function RequestForm() {
           </div>
 
           {/* Submit Bar */}
-          <div className="bg-slate-200/50 p-4 border-t border-slate-200 flex justify-end">
+          <div className="bg-amber-200/50 p-4 border-t border-amber-200 flex justify-end">
             <Button
               type="submit"
               disabled={isSubmitting}
