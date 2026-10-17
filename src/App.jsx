@@ -980,6 +980,8 @@ function RequestForm() {
   ];
 
   const preparedByOptions = [
+    "SALENGA, JOMER",
+    "JOJO JIMENEZ YMASA",
     "ABARRACOSO, NISSA",
     "AQUINO, NONI BRIAN",
     "BENDRINO, LOREYNE AYNE",
