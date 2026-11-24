@@ -932,7 +932,7 @@ function RequestForm() {
 
         // WARNING: Replace this string with your Google Apps Script Web App URL
         const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbxUAV17LzvAxx7UO1oMiremM7qSaZZj2dMl1kC7t6CkfuUrreWDRx_1A3zdqnuVpQG4/exec";
+          "https://script.google.com/macros/s/AKfycbxGdo-HjtxEstZuIl672kMSbAmq0ADYhnllVI63V11PAbhcrqCqaUj-X1-MVs4jep8Y/exec";
 
         await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
