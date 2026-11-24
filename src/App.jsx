@@ -739,6 +739,7 @@ function RequestForm() {
     address: "",
     preparedBy: "",
     otherPreparedBy: "", // <-- NEW FIELD FOR CUSTOM NAME
+    senderEmail: "", // <-- NEW FIELD FOR SENDER EMAIL
     feeType: "",
     otherFeeType: "",
   };
@@ -919,6 +920,7 @@ function RequestForm() {
           accountName: formData.accountName,
           address: formData.address,
           preparedBy: finalPreparedBy, // <-- USES NEW VARIABLE
+          senderEmail: formData.senderEmail,
           feeType: formData.feeType,
           otherFeeType: formData.otherFeeType,
           totalQty: totalQty,
@@ -930,7 +932,7 @@ function RequestForm() {
 
         // WARNING: Replace this string with your Google Apps Script Web App URL
         const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbzeQz-bog9XKAJFxa_tSuGTNFb52W4xPIaAX2cNO-ppOA8vvbtSMWo5Mqy-aJYLwacK/exec";
+          "https://script.google.com/macros/s/AKfycbxUAV17LzvAxx7UO1oMiremM7qSaZZj2dMl1kC7t6CkfuUrreWDRx_1A3zdqnuVpQG4/exec";
 
         await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
@@ -1149,6 +1151,23 @@ function RequestForm() {
                     id="address"
                     name="address"
                     value={formData.address}
+                    onChange={handleInputChange}
+                    required
+                    className="h-8 text-sm bg-amber-50/50"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <Label
+                    htmlFor="senderEmail"
+                    className="text-xs text-amber-600 font-medium"
+                  >
+                    Sender Email
+                  </Label>
+                  <Input
+                    type="email"
+                    id="senderEmail"
+                    name="senderEmail"
+                    value={formData.senderEmail}
                     onChange={handleInputChange}
                     required
                     className="h-8 text-sm bg-amber-50/50"
