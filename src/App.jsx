@@ -978,6 +978,7 @@ function RequestForm() {
     "Intro Discount",
     "Sampling",
     "Change of vendors fee",
+    "Customer Support",
     "Others",
   ];
 
